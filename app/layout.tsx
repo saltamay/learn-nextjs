@@ -2,11 +2,6 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
 import Navbar from "../components/navbar";
-import {
-  ResizableHandle,
-  ResizablePanel,
-  ResizablePanelGroup,
-} from "@/components/ui/resizable";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -16,7 +11,7 @@ export const metadata: Metadata = {
     "Learn React.js and Next.js with an interactive browser-based tutorial.",
 };
 
-export default function RootLayout({
+function Root({
   children,
 }: Readonly<{
   children: React.ReactNode;
@@ -29,4 +24,12 @@ export default function RootLayout({
       </body>
     </html>
   );
+}
+
+export default function RootLayout({
+  children,
+}: Readonly<{
+  children: React.ReactNode;
+}>) {
+  return <Root children={children} />;
 }
