@@ -1,5 +1,3 @@
-import Image from "next/image";
-
 export default function Home() {
-  return <main>Interactive Playground</main>;
+  return <main className="font-semibold">Playground</main>;
 }
