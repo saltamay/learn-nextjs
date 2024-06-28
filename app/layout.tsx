@@ -11,9 +11,9 @@ import {
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "React and Next.js Playground",
+  title: "Introduction - Welcome to React.js & Next.js Tutorial",
   description:
-    "Learn React and Next.js with an interactive browser-based tutorial",
+    "Learn React.js and Next.js with an interactive browser-based tutorial.",
 };
 
 export default function RootLayout({
@@ -25,22 +25,7 @@ export default function RootLayout({
     <html lang="en">
       <body className={`${inter.className}  bg-[#23272f] text-gray-100`}>
         <Navbar />
-        <ResizablePanelGroup
-          direction="horizontal"
-          className="min-h-[200px] border"
-        >
-          <ResizablePanel defaultSize={35} className="h-[calc(100vh-64px)]">
-            <div className="flex h-full items-center justify-center font-semibold">
-              Content
-            </div>
-          </ResizablePanel>
-          <ResizableHandle withHandle />
-          <ResizablePanel defaultSize={65}>
-            <div className="flex h-full items-center justify-center">
-              {children}
-            </div>
-          </ResizablePanel>
-        </ResizablePanelGroup>
+        <main>{children}</main>
       </body>
     </html>
   );
