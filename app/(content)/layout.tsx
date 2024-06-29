@@ -5,28 +5,36 @@ import {
   ResizablePanel,
   ResizablePanelGroup,
 } from "@/components/ui/resizable";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef } from "react";
 import sdk from "@stackblitz/sdk";
+import { usePathname } from "next/navigation";
 
 function Playground() {
+  const pathname = usePathname();
   const ref = useRef(null);
+
+  const projectId = `react-playground-${pathname.slice(1)}`;
 
   useEffect(() => {
     if (!ref.current) return;
-    sdk.embedProjectId("stackBlitz", "welcome-to-react-tutorial", {
-      forceEmbedLayout: true,
-      openFile: "src/App.jsx",
-      view: "default",
-      theme: "dark",
-      width: "100%",
-      height: "100%",
-    });
+    try {
+      sdk.embedProjectId("stackBlitz", projectId, {
+        forceEmbedLayout: true,
+        openFile: "src/App.jsx",
+        view: "default",
+        theme: "dark",
+        width: "100%",
+        height: "100%",
+      });
+    } catch (error) {
+      console.log(error);
+    }
   }, []);
 
   return <div ref={ref} id="stackBlitz" />;
 }
 
-export default function Page({ children }: { children: React.ReactNode }) {
+export default function Layout({ children }: { children: React.ReactNode }) {
   return (
     <ResizablePanelGroup
       direction="horizontal"
